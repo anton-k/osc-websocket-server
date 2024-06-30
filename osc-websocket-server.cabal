@@ -1,0 +1,120 @@
+cabal-version: 2.2
+
+-- This file has been generated from package.yaml by hpack version 0.36.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           osc-websocket-server
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/osc-websocket-server#readme>
+homepage:       https://github.com/githubuser/osc-websocket-server#readme
+bug-reports:    https://github.com/githubuser/osc-websocket-server/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2024 Author name here
+license:        BSD-3-Clause
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/osc-websocket-server
+
+library
+  exposed-modules:
+      Osc.WebSocket.Server
+  other-modules:
+      Paths_osc_websocket_server
+  autogen-modules:
+      Paths_osc_websocket_server
+  hs-source-dirs:
+      src
+  default-extensions:
+      OverloadedStrings
+      OverloadedRecordDot
+      DuplicateRecordFields
+      RecordWildCards
+      LambdaCase
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , network
+    , network-run
+    , servant
+    , servant-server
+    , servant-websockets
+    , text
+    , unagi-chan
+    , vivid-osc
+    , wai
+    , warp
+    , websockets
+  default-language: GHC2021
+
+executable osc-websocket-server-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_osc_websocket_server
+  autogen-modules:
+      Paths_osc_websocket_server
+  hs-source-dirs:
+      app
+  default-extensions:
+      OverloadedStrings
+      OverloadedRecordDot
+      DuplicateRecordFields
+      RecordWildCards
+      LambdaCase
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , network
+    , network-run
+    , osc-websocket-server
+    , servant
+    , servant-server
+    , servant-websockets
+    , text
+    , unagi-chan
+    , vivid-osc
+    , wai
+    , warp
+    , websockets
+  default-language: GHC2021
+
+test-suite osc-websocket-server-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_osc_websocket_server
+  autogen-modules:
+      Paths_osc_websocket_server
+  hs-source-dirs:
+      test
+  default-extensions:
+      OverloadedStrings
+      OverloadedRecordDot
+      DuplicateRecordFields
+      RecordWildCards
+      LambdaCase
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , network
+    , network-run
+    , osc-websocket-server
+    , servant
+    , servant-server
+    , servant-websockets
+    , text
+    , unagi-chan
+    , vivid-osc
+    , wai
+    , warp
+    , websockets
+  default-language: GHC2021
