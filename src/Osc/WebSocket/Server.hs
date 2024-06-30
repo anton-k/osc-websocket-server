@@ -3,7 +3,7 @@ module Osc.WebSocket.Server
   , OscServerConfig (..)
   , OscConfig (..)
   , OscServerConfig (..)
-  , OscServer (..)
+  , OscServer
   , runOscServer
   , newOscServer
   , closeServer
@@ -48,7 +48,7 @@ data OscServerConfig = OscServerConfig
   }
 
 data OscServer = OscServer
-  { port :: Int
+  { config :: OscServerConfig
   , sendSocket :: Socket
   , listenChan :: InChan ByteString
   , listenProcess :: ThreadId
@@ -60,7 +60,6 @@ newOscServer config = do
   (listenChan, _outChan) <- newChan
   listenProcess <- forkIO $ runUDPServer config.listen.address (show config.listen.port) $
     \sock -> listenOsc sock listenChan
-  let port = config.port
   pure OscServer {..}
 
 getWithDefAddress :: Maybe String -> String
@@ -70,13 +69,20 @@ closeServer :: OscServer -> IO ()
 closeServer server = killThread server.listenProcess
 
 greet :: OscServer -> IO ()
-greet server =
-  putStrLn $ "Starting server on http://localhost:" <> show server.port
+greet server = do
+  putStrLn $ "Starting server on http://localhost:" <> show server.config.port
+  putStrLn $ "Listen for OSC messages on: " <> oscFullAddr server.config.listen
+  putStrLn $ "Send OSC messages to: " <> oscFullAddr server.config.send
+  where
+    oscFullAddr osc = case osc.address of
+      Nothing -> "localhost:" <> show osc.port
+      Just addr -> addr <> ":" <> show osc.port
+
 
 startApp :: OscServer -> IO ()
 startApp server = do
   greet server
-  run server.port (app server)
+  run server.config.port (app server)
     `finally` closeServer server
 
 app :: OscServer -> Application

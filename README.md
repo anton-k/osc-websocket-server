@@ -12,12 +12,13 @@ and you want to write controller in the browser with knobs, sliders, etc.
 * Install [stack](https://docs.haskellstack.org/en/stable/).
 * clone repo with git and navigate to it:
 
-```
-
-```
+    ```
+    git clone https://github.com/anton-k/osc-websocket-server.git
+    cd osc-websocket-server
+    ```
 
 * run the server:
 
-```
-stack run
-```
+    ```
+    stack run
+    ```

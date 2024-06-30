@@ -6,11 +6,11 @@ import Osc.WebSocket.Server
 
 main :: IO ()
 main = do
-  server <- newOscServer config
+  server <- newOscServer appConfig
   startApp server
 
-config :: OscServerConfig
-config =
+appConfig :: OscServerConfig
+appConfig =
   OscServerConfig
     { port = 9090
     , send = OscConfig
