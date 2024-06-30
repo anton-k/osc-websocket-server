@@ -37,9 +37,11 @@ library
       DuplicateRecordFields
       RecordWildCards
       LambdaCase
+      TemplateHaskell
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
     , bytestring
     , network
     , network-run
@@ -52,6 +54,7 @@ library
     , wai
     , warp
     , websockets
+    , yaml
   default-language: GHC2021
 
 executable osc-websocket-server-exe
@@ -68,9 +71,11 @@ executable osc-websocket-server-exe
       DuplicateRecordFields
       RecordWildCards
       LambdaCase
+      TemplateHaskell
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
     , bytestring
     , network
     , network-run
@@ -84,6 +89,7 @@ executable osc-websocket-server-exe
     , wai
     , warp
     , websockets
+    , yaml
   default-language: GHC2021
 
 test-suite osc-websocket-server-test
@@ -101,9 +107,11 @@ test-suite osc-websocket-server-test
       DuplicateRecordFields
       RecordWildCards
       LambdaCase
+      TemplateHaskell
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
     , bytestring
     , network
     , network-run
@@ -117,4 +125,5 @@ test-suite osc-websocket-server-test
     , wai
     , warp
     , websockets
+    , yaml
   default-language: GHC2021

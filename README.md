@@ -22,3 +22,25 @@ and you want to write controller in the browser with knobs, sliders, etc.
     ```
     stack run
     ```
+
+By default it starts server on port 9090, listens on 3333 and sends to 3334.
+We can change the defaults if we pass the YAML-config file to the server:
+
+```
+stack run -- config.yaml
+```
+
+Config file example:
+
+```yaml
+port: 9090
+listen:
+    address: 127.0.0.1
+    port: 3333
+send:
+    address: 127.0.0.1
+    port: 3334
+```
+
+Note that address is optional if missing the `localhost` is used.
+

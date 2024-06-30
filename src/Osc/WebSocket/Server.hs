@@ -33,6 +33,7 @@ import Control.Monad
 import Control.Exception
 import Network.Run.UDP
 import Data.Text.Lazy.Encoding qualified as Text
+import Data.Aeson.TH qualified as Json
 
 type WebSocketApi = WebSocket
 
@@ -46,6 +47,9 @@ data OscServerConfig = OscServerConfig
   , send :: OscConfig
   , listen :: OscConfig
   }
+
+$(Json.deriveJSON Json.defaultOptions ''OscConfig)
+$(Json.deriveJSON Json.defaultOptions ''OscServerConfig)
 
 data OscServer = OscServer
   { config :: OscServerConfig

@@ -26,6 +26,7 @@ default-extensions:
   - DuplicateRecordFields
   - RecordWildCards
   - LambdaCase
+  - TemplateHaskell
 
 dependencies:
 - base >= 4.7 && < 5
@@ -41,6 +42,8 @@ dependencies:
 - unagi-chan
 - bytestring
 - network-run
+- aeson
+- yaml
 
 ghc-options:
 - -Wall
